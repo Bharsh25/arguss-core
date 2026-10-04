@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    @apply bg-page text-ink;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply font-sans antialiased text-ink bg-page min-h-screen selection:bg-accent/25 selection:text-accent-light;
+    overflow-x: hidden;
+    background-image: 
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(56, 189, 248, 0.08), transparent 70%),
+      radial-gradient(ellipse 60% 40% at 90% 80%, rgba(245, 158, 11, 0.05), transparent 60%);
+  }
+
+  input:focus-visible,
+  button:focus-visible,
+  a:focus-visible {
+    @apply outline-none ring-2 ring-accent/60 ring-offset-2 ring-offset-page;
+  }
+
+  button, a {
+    touch-action: manipulation;
+  }
+
+  /* Sleek modern dark scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #07090E;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1E293B;
+    border-radius: 9999px;
+    border: 1px solid #07090E;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #334155;
+  }
+}
+
+@layer components {
+  /* Inset well input field: text-base on mobile prevents iOS Safari auto-zoom! */
+  .input-field {
+    @apply w-full rounded-lg border border-border bg-subtle/80 px-3.5 py-2.5 text-base sm:text-sm text-ink placeholder:text-faint 
+           focus:border-accent focus:bg-card focus:ring-2 focus:ring-accent/20 transition-all duration-200 outline-none backdrop-blur-sm;
+  }
+
+  /* Cyber Primary Button: Amber Glow */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-amber-400 to-accent px-4 sm:px-5 py-2.5 
+           text-sm font-semibold text-gray-950 shadow-md transition-all duration-200 
+           hover:from-amber-300 hover:to-amber-500 active:scale-[0.98] 
+           disabled:opacity-50 disabled:pointer-events-none disabled:shadow-none min-h-[42px];
+  }
+  .btn-primary:hover:not(:disabled) {
+    box-shadow: 0 0 25px -4px rgba(245, 158, 11, 0.45);
+  }
+
+  /* Cyber Cyan Button */
+  .btn-cyan {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-4 sm:px-5 py-2.5 
+           text-sm font-semibold text-white shadow-md transition-all duration-200 
+           hover:from-cyan-400 hover:to-blue-400 active:scale-[0.98] 
+           disabled:opacity-50 disabled:pointer-events-none min-h-[42px];
+  }
+  .btn-cyan:hover:not(:disabled) {
+    box-shadow: 0 0 25px -4px rgba(6, 182, 212, 0.45);
+  }
+
+  /* Ghost/Outline secondary button with glass hover */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-border bg-card/60 backdrop-blur-md px-3.5 sm:px-4 py-2.5 
+           text-sm font-medium text-ink transition-all duration-200 
+           hover:bg-white/[0.06] hover:border-border-strong hover:text-white active:scale-[0.98] 
+           disabled:opacity-50 disabled:pointer-events-none min-h-[42px];
+  }
+
+  /* Subtle link */
+  .btn-link {
+    @apply text-sm font-medium text-muted transition-colors hover:text-accent hover:underline decoration-accent/50 underline-offset-4 py-1;
+  }
+
+  /* Glassmorphic Cyber Card: responsive padding */
+  .card {
+    @apply rounded-card border border-border/80 bg-card/75 backdrop-blur-xl p-4 sm:p-6 shadow-card transition-all duration-200;
+  }
+
+  .card-hoverable {
+    @apply card hover:border-border-strong hover:bg-card-hover/90 hover:-translate-y-0.5;
+  }
+  .card-hoverable:hover {
+    box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.7), 0 0 20px rgba(56, 189, 248, 0.12);
+  }
+
+  /* Monospace badge label */
+  .meta-label {
+    @apply font-mono text-[11px] uppercase tracking-widest2 text-muted;
+  }
+
+  /* Cyber Grid Background pattern */
+  .bg-grid-cyber {
+    background-size: 32px 32px;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  }
+}
+
+/* Biometric scanning beam */
+@keyframes laserSweep {
+  0% {
+    top: 0%;
+    opacity: 0.8;
+  }
+  50% {
+    top: 98%;
+    opacity: 1;
+  }
+  100% {
+    top: 0%;
+    opacity: 0.8;
+  }
+}
+
+.laser-scanner-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, #38bdf8 30%, #f59e0b 50%, #38bdf8 70%, transparent 100%);
+  box-shadow: 0 0 16px 2px #38bdf8, 0 0 8px 1px #f59e0b;
+  animation: laserSweep 2.6s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* Audio wave pulse bar */
+@keyframes audioPulse {
+  0%, 100% { height: 6px; }
+  50% { height: 28px; }
+}
+
+.sound-wave-bar {
+  animation: audioPulse 1.2s ease-in-out infinite;
+}

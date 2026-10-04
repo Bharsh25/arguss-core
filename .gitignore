@@ -1,0 +1,23 @@
+# --- Python / Backend (arguss-backend) ---
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.pytest_cache/
+.mypy_cache/
+
+# --- Node.js / Frontend (arguss-frontend) ---
+node_modules/
+dist/
+build/
+.env
+.env.local
+.env.development.local
+.env.production.local
+
+# --- OS / Editor Generated Files ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

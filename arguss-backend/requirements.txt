@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+python-multipart
+pydantic-settings
+supabase
+bcrypt
+PyJWT
+Pillow
+numpy
+dlib
+face_recognition_models
+librosa
+resemblyzer
+webrtcvad-wheels
